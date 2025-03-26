@@ -2,6 +2,7 @@
 import { Button } from '@/components/atoms/Button';
 import { Input } from '@/components/atoms/Input';
 import { Typography } from '@/components/atoms/Typography';
+import { LoginForm } from '@/components/molecules/LoginForm';
 import { redirect } from 'next/navigation';
 
 const Page = () => {
@@ -9,7 +10,7 @@ const Page = () => {
     redirect('/');
   }
   return (
-    <div className={'flex flex-col items-start gap-5 p-4'}>
+    <div className={'flex flex-col items-start gap-5 p-4 w-full'}>
       <div>
         <Button variant={'default'}>Primary</Button>
         <Button variant={'secondary'}>Secondary</Button>
@@ -36,6 +37,7 @@ const Page = () => {
         H6
       </Typography>
       <Input />
+      <LoginForm onSubmitForm={(value) => console.log(value)} />
     </div>
   );
 };
