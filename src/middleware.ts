@@ -9,4 +9,4 @@ export async function middleware(req: NextRequest) {
   return NextResponse.next();
 }
 
-export const config = { matcher: ['/user', '/admin'] };
+export const config = { matcher: ['/users', '/admin'] };

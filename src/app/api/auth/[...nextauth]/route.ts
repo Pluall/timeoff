@@ -30,19 +30,30 @@ export const authOptions: NextAuthOptions = {
         );
         if (!isValid) throw new Error('Wrong Password');
 
-        return { id: user.id, email: user.email, role: user.role };
+        const loggedUser = {
+          id: user.id,
+          name: user.name,
+          email: user.emailAddress,
+          role: user.role,
+        };
+
+        return loggedUser;
       },
     }),
   ],
   callbacks: {
     async session({ session, token }) {
-      session.user.id = token.sub as string;
-      session.user.role = token.role as 'user' | 'admin';
+      session.user.id = token.id as string;
+      session.user.name = token.name as string;
+      session.user.email = token.email as string;
+      session.user.role = token.role as string;
       return session;
     },
     async jwt({ token, user }) {
       if (user) {
-        token.sub = user.id;
+        token.id = user.id;
+        token.name = user.name;
+        token.email = user.email;
         token.role = user.role;
       }
       return token;
