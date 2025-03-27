@@ -32,7 +32,7 @@ const LoginForm = React.forwardRef<HTMLDivElement, LoginFormProps>(
     return (
       <div
         className={
-          'flex flex-col border shadow-md rounded-md px-6 py-8 items-center justify-center w-auto gap-12'
+          'flex flex-col border shadow-md rounded-lg px-6 py-8 items-center justify-center w-auto gap-12'
         }
         ref={ref}
       >

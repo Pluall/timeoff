@@ -3,6 +3,7 @@ import { Button } from '@/components/atoms/Button';
 import { Input } from '@/components/atoms/Input';
 import { Typography } from '@/components/atoms/Typography';
 import { LoginForm } from '@/components/molecules/LoginForm';
+import { UserCard } from '@/components/molecules/UserCard';
 import { redirect } from 'next/navigation';
 
 const Page = () => {
@@ -37,6 +38,21 @@ const Page = () => {
         H6
       </Typography>
       <Input />
+      <UserCard
+        userName={'Marcos Martins'}
+        userJob={'FullstackDeveloper'}
+        variant={'default'}
+      />
+      <UserCard
+        userName={'Marcos Martins'}
+        userJob={'FullstackDeveloper'}
+        variant={'user'}
+      />
+      <UserCard
+        userName={'Marcos Martins'}
+        userJob={'FullstackDeveloper'}
+        variant={'admin'}
+      />
       <LoginForm onSubmitForm={(value) => console.log(value)} />
     </div>
   );
