@@ -108,6 +108,7 @@ const LoginForm = React.forwardRef<HTMLDivElement, LoginFormProps>(
                     <Input
                       id={field.name}
                       placeholder={'Password'}
+                      type={'password'}
                       name={field.name}
                       value={field.state.value}
                       onBlur={field.handleBlur}
