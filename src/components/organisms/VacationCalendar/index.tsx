@@ -50,7 +50,6 @@ export const VacationCalendar: React.FC<VacationCalendarProps> = ({
 
   const handleSave = () => {
     setNewDates(false);
-    console.log('Saving vacation days:', vacationDays);
     const vacationDates = vacationDays.map((vacation) => {
       return vacation.date;
     });
