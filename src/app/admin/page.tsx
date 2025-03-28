@@ -31,7 +31,7 @@ const Admin = () => {
         }
       });
     }
-  }, [users]);
+  }, [users, usersList.length, vacationDays]);
 
   const onLogoutHandler = async () => {
     await signOut({ redirect: true, callbackUrl: '/login' });

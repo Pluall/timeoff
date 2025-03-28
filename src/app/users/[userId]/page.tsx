@@ -25,7 +25,7 @@ const Users = () => {
         setVacationDays(vacationData);
       }
     }
-  }, [userQueryData]);
+  }, [userQueryData, vacationDays.length]);
 
   const onLogoutHandler = async () => {
     await signOut({ redirect: true, callbackUrl: '/login' });
