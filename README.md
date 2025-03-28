@@ -59,6 +59,11 @@ Start the development server:
 yarn dev  # or npm run dev
 ```
 
+There are two users registered for testing purposes with the following credentials:
+
+- user role -> marcos@user.com - adminpassword
+- admin role -> marcos@admin.com - adminpassword
+
 The app will be available at: **[http://localhost:3000](http://localhost:3000)**
 
 ---
