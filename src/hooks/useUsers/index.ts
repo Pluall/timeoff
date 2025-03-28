@@ -12,7 +12,7 @@ const fetchUsers = async () => {
 
 export const useUsers = () => {
   return useQuery({
-    queryKey: ['users'], // Unique key for caching
-    queryFn: fetchUsers, // Function to fetch data
+    queryKey: ['users'],
+    queryFn: fetchUsers,
   });
 };
