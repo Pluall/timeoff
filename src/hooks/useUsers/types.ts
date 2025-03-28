@@ -13,4 +13,5 @@ export type User = {
   phoneNumber?: number;
   job: string;
   role: string;
+  vacationDays?: string[];
 };

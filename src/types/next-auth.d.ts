@@ -6,6 +6,7 @@ declare module 'next-auth' {
     name: string;
     email: string;
     role: string;
+    vacationDays: string[];
   }
 
   interface Session {
@@ -17,5 +18,6 @@ declare module 'next-auth' {
     name: string;
     email: string;
     role: string;
+    vacationDays: string[];
   }
 }

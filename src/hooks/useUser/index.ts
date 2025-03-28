@@ -1,9 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { useUserProps } from './types';
 
-const fetchUsers = async () => {
+const fetchUsers = async (userId: string) => {
+  const requestURL = `/api/users/${userId}`;
   try {
-    const response = await axios.get('/api/users', {
+    const response = await axios.get(requestURL, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -15,9 +17,9 @@ const fetchUsers = async () => {
   }
 };
 
-export const useUsers = () => {
+export const useUser: useUserProps = (userId) => {
   return useQuery({
-    queryKey: ['users'],
-    queryFn: fetchUsers,
+    queryKey: ['user'],
+    queryFn: () => fetchUsers(userId),
   });
 };

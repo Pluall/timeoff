@@ -35,6 +35,7 @@ export const authOptions: NextAuthOptions = {
           name: user.name,
           email: user.emailAddress,
           role: user.role,
+          vacationDays: user.vacationDays,
         };
 
         return loggedUser;
@@ -47,6 +48,7 @@ export const authOptions: NextAuthOptions = {
       session.user.name = token.name as string;
       session.user.email = token.email as string;
       session.user.role = token.role as string;
+      session.user.vacationDays = token.vacationDays as string[];
       return session;
     },
     async jwt({ token, user }) {
@@ -55,6 +57,7 @@ export const authOptions: NextAuthOptions = {
         token.name = user.name;
         token.email = user.email;
         token.role = user.role;
+        token.vacationDays = user.vacationDays as string[];
       }
       return token;
     },

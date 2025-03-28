@@ -19,6 +19,7 @@ const Page = () => {
     role: 'admin',
     job: 'Fullstack Developer',
     phoneNumber: undefined,
+    vacationDays: [],
   };
 
   return (
