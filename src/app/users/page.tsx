@@ -19,7 +19,6 @@ const Users = () => {
   };
 
   const onOpenCalendarHandler = () => {
-    console.log('clicking');
     const userId = session.data?.user.id;
     router.push(`/users/${userId}`);
   };
