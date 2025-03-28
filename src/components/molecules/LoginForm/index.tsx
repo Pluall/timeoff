@@ -71,7 +71,7 @@ const LoginForm = React.forwardRef<HTMLDivElement, LoginFormProps>(
                         Email Address
                       </Typography>
                       <Input
-                        placeholder={'Email Adress'}
+                        placeholder={'Email Address'}
                         id={field.name}
                         name={field.name}
                         value={field.state.value}

@@ -10,7 +10,7 @@ export type User = {
   id: string;
   name: string;
   emailAddress: string;
-  phoneNumber: number;
+  phoneNumber?: number;
   job: string;
   role: string;
 };

@@ -1,7 +1,8 @@
 'use client';
 import { Button } from '@/components/atoms/Button';
 import { Typography } from '@/components/atoms/Typography';
-import { UserCard } from '@/components/molecules/UserCard';
+import { UserForm } from '@/components/molecules/UserForm';
+import { UserInfo } from '@/components/molecules/UsersInfo';
 import { useUsers } from '@/hooks/useUsers';
 import { User } from '@/hooks/useUsers/types';
 import { signOut } from 'next-auth/react';
@@ -12,10 +13,6 @@ const Admin = () => {
 
   const onLogoutHandler = async () => {
     await signOut({ redirect: true, callbackUrl: '/login' });
-  };
-
-  const onAddUserHandler = () => {
-    console.log('add User');
   };
 
   return (
@@ -36,17 +33,16 @@ const Admin = () => {
             <Typography as={'h3'} size={'2xl'}>
               Users List
             </Typography>
-            <Button onClick={onAddUserHandler}>Add</Button>
+            <UserForm onSubmitForm={(value) => console.log(value)} />
           </div>
           <div className={'flex flex-col gap-2'}>
             {users ? (
               users.map((user) => {
                 return (
-                  <UserCard
+                  <UserInfo
                     key={user.id}
-                    userName={user.name}
-                    userJob={user.job}
-                    variant={'admin'}
+                    userData={user}
+                    onDeleteUser={(userId) => console.log('deleting: ', userId)}
                   />
                 );
               })

@@ -4,12 +4,23 @@ import { Input } from '@/components/atoms/Input';
 import { Typography } from '@/components/atoms/Typography';
 import { LoginForm } from '@/components/molecules/LoginForm';
 import { UserCard } from '@/components/molecules/UserCard';
+import { UserForm } from '@/components/molecules/UserForm';
+import { UserInfo } from '@/components/molecules/UsersInfo';
 import { redirect } from 'next/navigation';
 
 const Page = () => {
   if (process.env.NODE_ENV !== 'development') {
     redirect('/');
   }
+  const user = {
+    name: 'Marcos Martins',
+    emailAddress: 'marcos@admin.com',
+    id: 'a2e7b090-9eec-49db-ba8a-9ae6d3e5a0fe',
+    role: 'admin',
+    job: 'Fullstack Developer',
+    phoneNumber: undefined,
+  };
+
   return (
     <div className={'flex flex-col items-start gap-5 p-4 w-full'}>
       <div>
@@ -53,6 +64,11 @@ const Page = () => {
         userJob={'FullstackDeveloper'}
         variant={'admin'}
       />
+      <UserInfo
+        userData={user}
+        onDeleteUser={(userId) => console.log('deleting: ', userId)}
+      />
+      <UserForm onSubmitForm={(value) => console.log(value)} />
       <LoginForm onSubmitForm={(value) => console.log(value)} />
     </div>
   );
