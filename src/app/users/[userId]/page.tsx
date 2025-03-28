@@ -12,13 +12,11 @@ const Users = () => {
   const session = useSession();
   const userId = session.data?.user.id;
   const userQueryData = useUser(userId as string);
-  console.log(userQueryData);
 
   const [vacationDays, setVacationDays] = useState<VacationDataProps[]>([]);
 
   useEffect(() => {
-    if (userQueryData.data?.user) {
-      console.log('Here');
+    if (userQueryData.data?.user && vacationDays.length === 0) {
       const vacationDays = userQueryData.data.user.vacationDays;
       if (vacationDays) {
         const vacationData = vacationDays?.map((date) => {
@@ -34,7 +32,6 @@ const Users = () => {
   };
 
   const saveVacationHandler = async (vacationDates: string[]) => {
-    console.log(vacationDates);
     const putUrl = `/api/users/${userId}`;
     await axios.put(putUrl, {
       userId,

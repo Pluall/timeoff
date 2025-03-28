@@ -54,12 +54,14 @@ export const VacationCalendar: React.FC<VacationCalendarProps> = ({
     const vacationDates = vacationDays.map((vacation) => {
       return vacation.date;
     });
-    vacationSaveHandler(vacationDates);
+    if (vacationSaveHandler) vacationSaveHandler(vacationDates);
   };
 
   return (
     <div className='p-4 max-w-lg mx-auto bg-background shadow-md rounded-md'>
-      <h2 className='text-xl font-bold mb-4'>Select your vacation days</h2>
+      {role === 'user' ? (
+        <h2 className='text-xl font-bold mb-4'>Select your vacation days</h2>
+      ) : undefined}
       <FullCalendar
         plugins={[dayGridPlugin, interactionPlugin]}
         initialView='dayGridMonth'

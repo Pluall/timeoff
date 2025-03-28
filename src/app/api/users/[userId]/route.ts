@@ -18,7 +18,7 @@ export const PUT = async (req: Request) => {
 
 export const GET = async (req: Request) => {
   const url = new URL(req.url);
-  const userId = url.pathname.split('/').pop(); // Extract last part of URL
+  const userId = url.pathname.split('/').pop();
   const { data: users, error } = await supabase
     .from('User')
     .select('*')
@@ -30,4 +30,17 @@ export const GET = async (req: Request) => {
   }
 
   return NextResponse.json(users);
+};
+
+export const DELETE = async (req: Request) => {
+  const url = new URL(req.url);
+  const userId = url.pathname.split('/').pop();
+
+  const { error } = await supabase.from('User').delete().eq('id', userId);
+
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return NextResponse.json({ message: 'Deleted' }, { status: 200 });
 };
