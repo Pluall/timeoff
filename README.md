@@ -1,4 +1,4 @@
-# **Vacation Scheduler** 🏖️
+# **TIMEOFF - Vacation Scheduler** 🏖️
 
 A web application for managing user vacations with role-based authentication called TimeOFF.
 
@@ -20,7 +20,6 @@ Make sure you have the following installed:
 
 - **[Node.js](https://nodejs.org/)** (Latest LTS recommended)
 - **[Yarn](https://yarnpkg.com/)** _(or use npm)_
-- **[Supabase Account](https://supabase.com/)**
 
 ---
 
@@ -30,7 +29,7 @@ Clone the repository and install dependencies:
 
 ```sh
 git clone https://github.com/Pluall/timeoff.git
-cd vacation-scheduler
+cd timeoff
 yarn install  # or npm install
 ```
 
