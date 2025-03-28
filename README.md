@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# **Vacation Scheduler** 🏖️
 
-## Getting Started
+A web application for managing user vacations with role-based authentication called TimeOFF.
 
-First, run the development server:
+## **📌 Features**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+✅ **User authentication** with NextAuth and Supabase  
+✅ **Role-based access** (Admin/User)  
+✅ **Interactive vacation calendar** with FullCalendar  
+✅ **Protected routes**  
+✅ **Responsive UI** with Tailwind CSS
+
+---
+
+## **🚀 Getting Started**
+
+### **1️⃣ Prerequisites**
+
+Make sure you have the following installed:
+
+- **[Node.js](https://nodejs.org/)** (Latest LTS recommended)
+- **[Yarn](https://yarnpkg.com/)** _(or use npm)_
+- **[Supabase Account](https://supabase.com/)**
+
+---
+
+### **2️⃣ Installation**
+
+Clone the repository and install dependencies:
+
+```sh
+git clone https://github.com/Pluall/timeoff.git
+cd vacation-scheduler
+yarn install  # or npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### **3️⃣ Environment Variables**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env.` file in the root directory and add:
 
-## Learn More
+```ini
+NEXT_PUBLIC_SUPABASE_URL="https://hmwyzqrnwkigdlcomnmy.supabase.co"
+SUPABASE_SERVICE_ROLE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhtd3l6cXJud2tpZ2RsY29tbm15Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MzA3NDU5NCwiZXhwIjoyMDU4NjUwNTk0fQ.3ZN8dqtY95omchC2AWN67KczBF3gwgd2vmY8Wv3Gwik"
+SUPABASE_CLIENT_API_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhtd3l6cXJud2tpZ2RsY29tbm15Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMwNzQ1OTQsImV4cCI6MjA1ODY1MDU5NH0._T5nL5TIFlTAG62zzf1hgYUmp9eLwFqsxb0k8VZoRag"
+NEXTAUTH_SECRET='tpMv1/2NmeQnYCn9LXQHfb6Wt4L+R6vmsot30MzHCSo='
 
-To learn more about Next.js, take a look at the following resources:
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+📌 **⚠️ NEVER expose `SUPABASE_SERVICE_ROLE_KEY` in frontend!**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### **5️⃣ Running the Project**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Start the development server:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```sh
+yarn dev  # or npm run dev
+```
+
+The app will be available at: **[http://localhost:3000](http://localhost:3000)**
+
+---
+
+## **🛠️ API Endpoints**
+
+| Method | Endpoint          | Description                  | Access     |
+| ------ | ----------------- | ---------------------------- | ---------- |
+| GET    | `/api/users`      | Fetch all users (Admin only) | Admin      |
+| GET    | `/api/users/:id`  | Fetch a specific user        | User/Admin |
+| POST   | `/api/auth/login` | User login                   | Public     |
+| PUT    | `/api/users/:id`  | Update vacation days         | User       |
+
+---
+
+## **🔗 Tech Stack**
+
+- **Next.js 15** (App Router)
+- **TypeScript**
+- **Supabase** (Database + Auth)
+- **NextAuth.js** (Authentication)
+- **Tailwind CSS** (Styling)
+- **Shadcn/UI** (Styling)
+- **FullCalendar** (Vacation selection)
+
+---
