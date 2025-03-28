@@ -1,52 +1,50 @@
 'use client';
+import { Button } from '@/components/atoms/Button';
 import { Typography } from '@/components/atoms/Typography';
 import { UserCard } from '@/components/molecules/UserCard';
-import { useSession } from 'next-auth/react';
-
-const fakeUsers = [
-  {
-    id: '1',
-    name: 'Marcos Martins',
-    job: 'Fullstack Developer',
-  },
-  {
-    id: '2',
-    name: 'Paula Ferreira',
-    job: 'Marketing',
-  },
-  {
-    id: '3',
-    name: 'Paula Ferreira',
-    job: 'Marketing',
-  },
-  {
-    id: '4',
-    name: 'Paula Ferreira',
-    job: 'Marketing',
-  },
-];
+import { useUsers } from '@/hooks/useUsers';
+import { User } from '@/hooks/useUsers/types';
+import { signOut, useSession } from 'next-auth/react';
 
 const Users = () => {
   const session = useSession();
 
-  console.log(session);
+  const query = useUsers();
+  const users: User[] = query.data;
+
+  const onLogoutHandler = async () => {
+    await signOut({ redirect: true, callbackUrl: '/login' });
+  };
 
   return (
     <div className={'flex flex-col items-start w-full px-40 py-10 gap-10'}>
-      <Typography as={'h1'} size={'5xl'}>
-        Users List
-      </Typography>
+      <div className={'flex items-center justify-between w-full'}>
+        <Typography as={'h1'} size={'5xl'}>
+          Users List
+        </Typography>
+        <Button onClick={onLogoutHandler}>Log out</Button>
+      </div>
       <div className={'flex flex-wrap gap-2'}>
-        {fakeUsers.map((user) => {
-          return (
-            <UserCard
-              key={user.id}
-              userName={user.name}
-              userJob={user.job}
-              variant={'default'}
-            />
-          );
-        })}
+        {users ? (
+          users.map((user) => {
+            let cardVariant: 'default' | 'user' | 'admin' = 'default';
+            if (user.id === session.data?.user.id) {
+              cardVariant = 'user';
+            }
+            return (
+              <UserCard
+                key={user.id}
+                userName={user.name}
+                userJob={user.job}
+                variant={cardVariant}
+              />
+            );
+          })
+        ) : (
+          <Typography as={'h1'} size={'5xl'}>
+            No Users
+          </Typography>
+        )}
       </div>
     </div>
   );

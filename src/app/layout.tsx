@@ -4,6 +4,7 @@ import './globals.css';
 import SessionProvider from '@/components/SessionProvider';
 import { getServerSession } from 'next-auth';
 import { authOptions } from './api/auth/[...nextauth]/route';
+import QueryProvider from '@/components/QueryProvider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -32,7 +33,9 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SessionProvider session={session}>{children}</SessionProvider>
+        <QueryProvider>
+          <SessionProvider session={session}>{children}</SessionProvider>
+        </QueryProvider>
       </body>
     </html>
   );
